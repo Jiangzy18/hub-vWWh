@@ -38,7 +38,7 @@ class CharGRUDataset(Dataset):
         indices += [0] * (self.max_len - len(indices))
         return torch.tensor(indices, dtype=torch.long), self.labels[idx]
 
-# --- NEW LSTM Model Class ---
+# --- NEW GRU Model Class ---
 class GRUClassifier(nn.Module):
     def __init__(self, vocab_size, embedding_dim, hidden_dim, output_dim):
         super(GRUClassifier, self).__init__()
@@ -106,4 +106,5 @@ print(f"输入 '{new_text}' 预测为: '{predicted_class}'")
 
 new_text_2 = "查询明天北京的天气"
 predicted_class_2 = classify_text_gru(new_text_2, model, char_to_index, max_len, index_to_label)
+
 print(f"输入 '{new_text_2}' 预测为: '{predicted_class_2}'")
